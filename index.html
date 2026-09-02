@@ -1,4 +1,4 @@
-7<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -42,7 +42,7 @@
         </div>
         <div class="art">
           <i></i><strong>FRONTEND<br />+ BACKEND</strong
-          ><small>REACT · TS<br />APIs · SQL</small>
+          ><small>REACT · TS<br />NESTJS · SQL</small>
         </div>
       </section>
       <section class="projects" id="proyectos">
@@ -54,8 +54,10 @@
           <div class="filters">
             <button class="filter active" data-filter="all">Todos</button
             ><button class="filter" data-filter="fullstack">Full stack</button
-            ><button class="filter" data-filter="ecommerce">E-commerce</button
-            ><button class="filter" data-filter="api">APIs</button>
+            ><button class="filter" data-filter="ecommerce concept">E-commerce concept</button
+            ><button class="filter" data-filter="api">APIs</button
+            ><button class="filter" data-filter="aplications">Aplicaciones</button
+            ><button class="filter" data-filter="catalogo">Catalogo</button>
           </div>
         </div>
         <div class="grid" id="project-grid"></div>
@@ -63,7 +65,7 @@
       <section class="about" id="sobre-mi">
         <p class="eyebrow">Enfoque</p>
         <div class="aboutcopy">
-          <h2>De la idea a una interfaz que funciona.</h2>
+          <h2>Ideas convertidas en experiencias digitales.</h2>
           <div>
             <p>
               Me interesa transformar necesidades concretas en productos simples
@@ -72,8 +74,8 @@
               experiencia.
             </p>
             <p>
-              Me adapto a cada proyecto: desde una tienda online hasta una app
-              conectada a datos en tiempo real.
+              Cada proyecto es una oportunidad para aprender, resolver problemas y crear: 
+              desde una tienda online conceptual hasta una aplicación conectada a datos en tiempo real.
             </p>
           </div>
         </div>
@@ -91,6 +93,15 @@
         >
       </section>
     </main>
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Galería de capturas">
+      <button class="lightbox-close" type="button" aria-label="Cerrar galería">×</button>
+      <button class="lightbox-button previous" type="button" aria-label="Imagen anterior">←</button>
+      <figure class="lightbox-figure">
+        <img class="lightbox-image" alt="" />
+        <figcaption><strong class="lightbox-title"></strong><span class="lightbox-count"></span></figcaption>
+      </figure>
+      <button class="lightbox-button next" type="button" aria-label="Imagen siguiente">→</button>
+    </div>
     <footer>
       <span>© 2026 Manuel Irigoyen</span
       ><span>Diseñado y desarrollado con intención.</span>

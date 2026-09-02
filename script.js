@@ -115,6 +115,12 @@ const FOLDERS = {
   "Casino de Consola": "Casino Consola",
 };
 const G = document.querySelector("#project-grid");
+const lightbox = document.querySelector("#lightbox");
+const lightboxImage = lightbox.querySelector(".lightbox-image");
+const lightboxTitle = lightbox.querySelector(".lightbox-title");
+const lightboxCount = lightbox.querySelector(".lightbox-count");
+let galleryProject = "";
+let galleryIndex = 0;
 const pathPart = (part) => encodeURIComponent(part).replace(/%2F/g, "/");
 const imagePath = (project, image) => `./${pathPart(FOLDERS[project] || project)}/${pathPart(image)}`;
 function draw(f = "all") {
@@ -154,9 +160,53 @@ function setupCarousels() {
     };
     media.querySelector(".previous").onclick = () => showImage(current - 1);
     media.querySelector(".next").onclick = () => showImage(current + 1);
+    media.onclick = (event) => {
+      if (event.target.closest("button")) return;
+      openGallery(project, current);
+    };
     if (images.length > 1) setInterval(() => showImage(current + 1), 4000);
   });
 }
+function renderGalleryImage() {
+  const images = IMAGES[galleryProject];
+  galleryIndex = (galleryIndex + images.length) % images.length;
+  lightboxImage.src = imagePath(galleryProject, images[galleryIndex]);
+  lightboxImage.alt = `Captura ${galleryIndex + 1} de ${images.length} de ${galleryProject}`;
+  lightboxTitle.textContent = galleryProject;
+  lightboxCount.textContent = `${galleryIndex + 1} / ${images.length}`;
+}
+function openGallery(project, index) {
+  galleryProject = project;
+  galleryIndex = index;
+  renderGalleryImage();
+  lightbox.classList.add("open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lightbox-open");
+  lightbox.querySelector(".lightbox-close").focus();
+}
+function closeGallery() {
+  lightbox.classList.remove("open");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lightbox-open");
+}
+lightbox.querySelector(".previous").onclick = () => {
+  galleryIndex -= 1;
+  renderGalleryImage();
+};
+lightbox.querySelector(".next").onclick = () => {
+  galleryIndex += 1;
+  renderGalleryImage();
+};
+lightbox.querySelector(".lightbox-close").onclick = closeGallery;
+lightbox.onclick = (event) => {
+  if (event.target === lightbox) closeGallery();
+};
+document.addEventListener("keydown", (event) => {
+  if (!lightbox.classList.contains("open")) return;
+  if (event.key === "Escape") closeGallery();
+  if (event.key === "ArrowLeft") lightbox.querySelector(".previous").click();
+  if (event.key === "ArrowRight") lightbox.querySelector(".next").click();
+});
 draw();
 document.querySelectorAll(".filter").forEach(
   (b) =>

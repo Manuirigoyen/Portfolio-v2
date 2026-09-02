@@ -234,7 +234,8 @@ em {
   height: 100%;
   flex: 0 0 100%;
   min-width: 0;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 18px;
 }
 .project-media-track {
   width: 100%;
@@ -249,6 +250,28 @@ em {
   inset: 0;
   background: linear-gradient(180deg, #10111666 0%, #101116cc 62%, #101116f2 100%);
   pointer-events: none;
+}
+.project-media::before {
+  content: "Click para ampliar";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  padding: 8px 10px;
+  background: #101116cc;
+  color: var(--ink);
+  font: 500 10px "DM Mono";
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.project-media:hover::before {
+  opacity: 1;
+}
+.project-media,
+.project-media img {
+  cursor: zoom-in;
 }
 .carousel-button {
   position: absolute;
@@ -352,6 +375,86 @@ em {
 .hidden {
   display: none;
 }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 5vw, 70px);
+  padding: 70px 40px 45px;
+  background: #08090dcc;
+  backdrop-filter: blur(9px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.lightbox-figure {
+  width: min(900px, 76vw);
+  height: min(690px, 78vh);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.lightbox-image {
+  width: 100%;
+  height: calc(100% - 45px);
+  object-fit: contain;
+}
+.lightbox-figure figcaption {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink);
+  font: 500 11px "DM Mono";
+}
+.lightbox-count {
+  color: var(--lime);
+}
+.lightbox-button,
+.lightbox-close {
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff66;
+  background: #101116cc;
+  color: var(--ink);
+  cursor: pointer;
+}
+.lightbox-button {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  font: 20px "DM Mono";
+}
+.lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  width: 38px;
+  height: 38px;
+  font: 25px/1 "DM Mono";
+}
+.lightbox-button:hover,
+.lightbox-button:focus-visible,
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  background: var(--lime);
+  color: #101116;
+  outline: none;
+}
+body.lightbox-open {
+  overflow: hidden;
+}
 .about {
   background: var(--panel);
   padding: 100px 36px;
@@ -448,6 +551,25 @@ footer {
   }
   .project-info {
     min-height: 365px;
+  }
+  .project-media img {
+    padding: 12px;
+  }
+  .lightbox {
+    gap: 10px;
+    padding: 65px 14px 35px;
+  }
+  .lightbox-figure {
+    width: calc(100vw - 100px);
+    height: min(600px, 78vh);
+  }
+  .lightbox-button {
+    width: 34px;
+    height: 34px;
+  }
+  .lightbox-close {
+    top: 16px;
+    right: 17px;
   }
   .aboutcopy {
     grid-template-columns: 1fr;
