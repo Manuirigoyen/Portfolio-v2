@@ -1,0 +1,100 @@
+7<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio Desarrollo Web de Manuel Irigoyen"
+    />
+    <title>Manuel Irigoyen | Desarrollador web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#inicio">MI<span>.</span></a>
+      <nav>
+        <a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a
+        ><a href="#contacto">Contacto</a>
+      </nav>
+      <a class="github" href="https://github.com/Manuirigoyen" target="_blank"
+        >GitHub ↗</a
+      >
+    </header>
+    <main>
+      <section class="hero" id="inicio">
+        <p class="eyebrow">Portfolio 2026 · Argentina</p>
+        <h1>Creo experiencias web que se sienten <em>vivas.</em></h1>
+        <p class="intro">
+          Soy <b>Manuel Irigoyen</b>, desarrollador web. Diseño y construyo
+          productos digitales claros, veloces y listos para usar.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#proyectos"
+            >Ver proyectos <span>↓</span></a
+          ><a class="button quiet" href="#contacto">Hablemos</a>
+        </div>
+        <div class="art">
+          <i></i><strong>FRONTEND<br />+ BACKEND</strong
+          ><small>REACT · TS<br />APIs · SQL</small>
+        </div>
+      </section>
+      <section class="projects" id="proyectos">
+        <div class="heading">
+          <div>
+            <p class="eyebrow">Trabajo seleccionado</p>
+            <h2>Proyectos que resuelven.</h2>
+          </div>
+          <div class="filters">
+            <button class="filter active" data-filter="all">Todos</button
+            ><button class="filter" data-filter="fullstack">Full stack</button
+            ><button class="filter" data-filter="ecommerce">E-commerce</button
+            ><button class="filter" data-filter="api">APIs</button>
+          </div>
+        </div>
+        <div class="grid" id="project-grid"></div>
+      </section>
+      <section class="about" id="sobre-mi">
+        <p class="eyebrow">Enfoque</p>
+        <div class="aboutcopy">
+          <h2>De la idea a una interfaz que funciona.</h2>
+          <div>
+            <p>
+              Me interesa transformar necesidades concretas en productos simples
+              de entender y agradables de usar. Trabajo con una base sólida de
+              frontend moderno y también desarrollo la lógica detrás de cada
+              experiencia.
+            </p>
+            <p>
+              Me adapto a cada proyecto: desde una tienda online hasta una app
+              conectada a datos en tiempo real.
+            </p>
+          </div>
+        </div>
+        <div class="stack">
+          <span>React</span><span>TypeScript</span><span>JavaScript</span
+          ><span>NestJS</span><span>PostgreSQL</span><span>Vite</span
+          ><span>APIs REST</span><span>Git</span>
+        </div>
+      </section>
+      <section class="contact" id="contacto">
+        <p class="eyebrow">¿Tenés un proyecto en mente?</p>
+        <h2>Hagamos algo<br /><em>excelente.</em></h2>
+        <a href="https://github.com/Manuirigoyen" target="_blank"
+          >Conectemos en GitHub ↗</a
+        >
+      </section>
+    </main>
+    <footer>
+      <span>© 2026 Manuel Irigoyen</span
+      ><span>Diseñado y desarrollado con intención.</span>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
