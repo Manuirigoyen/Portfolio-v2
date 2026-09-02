@@ -209,7 +209,7 @@ em {
   border-left: 1px solid var(--line);
 }
 .project {
-  min-height: 530px;
+  min-height: 430px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -223,17 +223,24 @@ em {
   background: var(--panel);
 }
 .project-media {
-  height: 220px;
-  position: relative;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
   background: #24252d;
-  border-bottom: 1px solid var(--line);
 }
 .project-media img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
+}
+.project-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #10111666 0%, #101116cc 62%, #101116f2 100%);
+  pointer-events: none;
 }
 .carousel-button {
   position: absolute;
@@ -267,12 +274,13 @@ em {
   font: 500 10px "DM Mono";
 }
 .project-info {
-  min-height: 310px;
+  min-height: 430px;
   padding: 26px;
   display: flex;
   flex-direction: column;
   flex: 1;
   position: relative;
+  z-index: 1;
 }
 .index {
   font: 500 11px "DM Mono";
@@ -423,13 +431,10 @@ footer {
     grid-template-columns: 1fr;
   }
   .project {
-    min-height: 495px;
-  }
-  .project-media {
-    height: 190px;
+    min-height: 420px;
   }
   .project-info {
-    min-height: 305px;
+    min-height: 420px;
   }
   .aboutcopy {
     grid-template-columns: 1fr;
