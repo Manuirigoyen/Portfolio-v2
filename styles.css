@@ -209,7 +209,7 @@ em {
   border-left: 1px solid var(--line);
 }
 .project {
-  min-height: 380px;
+  min-height: 340px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -306,7 +306,7 @@ em {
   font: 500 10px "DM Mono";
 }
 .project-info {
-  min-height: 380px;
+  min-height: 340px;
   padding: 26px;
   display: flex;
   flex-direction: column;
@@ -547,10 +547,10 @@ footer {
     grid-template-columns: 1fr;
   }
   .project {
-    min-height: 365px;
+    min-height: 330px;
   }
   .project-info {
-    min-height: 365px;
+    min-height: 330px;
   }
   .project-media img {
     padding: 12px;
