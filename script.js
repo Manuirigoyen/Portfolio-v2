@@ -123,7 +123,9 @@ function draw(f = "all") {
       const images = IMAGES[p[0]] || [];
       return `<article class="project ${f != "all" && p[1] != f ? "hidden" : ""}">
         <div class="project-media" data-project="${p[0]}">
-          <img src="${imagePath(p[0], images[0])}" alt="Captura de ${p[0]}" />
+          <div class="project-media-track">
+            ${images.map((image, imageIndex) => `<img src="${imagePath(p[0], image)}" alt="Captura ${imageIndex + 1} de ${images.length} de ${p[0]}" />`).join("")}
+          </div>
           <button class="carousel-button previous" type="button" aria-label="Imagen anterior de ${p[0]}">←</button>
           <button class="carousel-button next" type="button" aria-label="Imagen siguiente de ${p[0]}">→</button>
           <span class="carousel-count">1 / ${images.length}</span>
@@ -143,17 +145,16 @@ function setupCarousels() {
     const project = media.dataset.project;
     const images = IMAGES[project];
     let current = 0;
-    const image = media.querySelector("img");
+    const track = media.querySelector(".project-media-track");
     const count = media.querySelector(".carousel-count");
     const showImage = (index) => {
       current = (index + images.length) % images.length;
-      image.src = imagePath(project, images[current]);
-      image.alt = `Captura ${current + 1} de ${images.length} de ${project}`;
+      track.style.transform = `translateX(-${current * 100}%)`;
       count.textContent = `${current + 1} / ${images.length}`;
     };
     media.querySelector(".previous").onclick = () => showImage(current - 1);
     media.querySelector(".next").onclick = () => showImage(current + 1);
-    if (images.length > 1) setInterval(() => showImage(current + 1), 4500);
+    if (images.length > 1) setInterval(() => showImage(current + 1), 4000);
   });
 }
 draw();
