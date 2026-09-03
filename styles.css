@@ -140,6 +140,7 @@ em {
 }
 .art img {
   position: absolute;
+  z-index: 0;
   width: 320px;
   height: 320px;
   left: 22px;
@@ -147,6 +148,14 @@ em {
   object-fit: contain;
   image-rendering: auto;
   filter: contrast(1.04) saturate(1.05);
+}
+.art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg, #c7f46412 0%, transparent 48%, #b9a1ff16 100%);
+  pointer-events: none;
 }
 .art strong,
 .art small {
