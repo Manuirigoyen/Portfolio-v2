@@ -258,9 +258,9 @@ em {
   top: 50%;
   z-index: 1;
   padding: 8px 10px;
-  border: 1px solid #ffffff38;
-  background: #10111666;
-  color: #f3f1ebcc;
+  border: 1px solid #ffffff24;
+  background: #10111640;
+  color: #f3f1ebaa;
   font: 500 10px "DM Mono";
   opacity: 0;
   transform: translate(-50%, -50%);
@@ -282,14 +282,14 @@ em {
   height: 34px;
   display: grid;
   place-items: center;
-  border: 1px solid #ffffff38;
-  background: #10111666;
-  color: #f3f1ebcc;
+  border: 1px solid #ffffff24;
+  background: #10111640;
+  color: #f3f1ebaa;
   font: 18px "DM Mono";
   cursor: pointer;
   transform: translateY(-50%);
   z-index: 2;
-  opacity: 0.72;
+  opacity: 0.5;
   backdrop-filter: blur(4px);
   transition: opacity 0.2s, background 0.2s, color 0.2s;
 }
