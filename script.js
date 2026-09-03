@@ -111,6 +111,10 @@ const IMAGES = {
   "Casino de Consola": ["image90.png", "image91.png", "image92.png", "image93.png", "image94.png", "image95.png", "image96.png", "image97.png"],
 };
 const FOLDERS = {
+  "Nike Concept": "Nike concept",
+  "Poke Search": "Poke search",
+  "Poke Autoincrement": "Poke autoincrement",
+  "Turnos Web": "Turnos web",
   "Search Crypto": "Crypto",
   "Casino de Consola": "Casino Consola",
 };
