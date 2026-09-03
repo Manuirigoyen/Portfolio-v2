@@ -140,7 +140,6 @@ em {
 }
 .art img {
   position: absolute;
-  z-index: 0;
   width: 320px;
   height: 320px;
   left: 22px;
@@ -148,19 +147,8 @@ em {
   object-fit: contain;
   image-rendering: auto;
   filter: contrast(1.04) saturate(1.05);
-}
-.art::after {
-  content: "";
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  left: 22px;
-  top: 22px;
-  border-radius: 50%;
-  z-index: 0;
-  background: linear-gradient(135deg, #c7f46455 0%, transparent 45%, #b9a1ff4d 100%);
-  mix-blend-mode: screen;
-  pointer-events: none;
+  -webkit-mask-image: linear-gradient(135deg, transparent 4%, #000 33%, #000 70%, transparent 96%);
+  mask-image: linear-gradient(135deg, transparent 4%, #000 33%, #000 70%, transparent 96%);
 }
 .art strong,
 .art small {
@@ -546,12 +534,6 @@ footer {
     opacity: 0.67;
   }
   .art img {
-    width: 250px;
-    height: 250px;
-    left: 25px;
-    top: 25px;
-  }
-  .art::after {
     width: 250px;
     height: 250px;
     left: 25px;
