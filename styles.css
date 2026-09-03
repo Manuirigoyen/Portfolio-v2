@@ -64,7 +64,7 @@ nav a:hover,
 }
 .hero {
   min-height: 675px;
-  padding: 116px 36px 80px;
+  padding: 64px 36px 80px;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
