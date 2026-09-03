@@ -258,13 +258,15 @@ em {
   top: 50%;
   z-index: 1;
   padding: 8px 10px;
-  background: #101116cc;
-  color: var(--ink);
+  border: 1px solid #ffffff38;
+  background: #10111666;
+  color: #f3f1ebcc;
   font: 500 10px "DM Mono";
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: opacity 0.2s;
   pointer-events: none;
+  backdrop-filter: blur(4px);
 }
 .project-media:hover::before {
   opacity: 1;
