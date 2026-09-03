@@ -138,19 +138,13 @@ em {
   background: linear-gradient(135deg, #1a1b23aa, #10111655);
   overflow: hidden;
 }
-.art i {
+.art img {
   position: absolute;
   width: 280px;
   height: 280px;
   left: 56px;
   top: 42px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 35%,
-    #d4ff75,
-    #9d7dff 50%,
-    #11131d 71%
-  );
+  object-fit: contain;
 }
 .art strong,
 .art small {
