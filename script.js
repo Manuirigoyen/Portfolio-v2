@@ -1,6 +1,6 @@
 const P = [
   [
-    "FigusPlay",
+    "FigusApp",
     "fullstack",
     "Full stack",
     "https://figus-play.vercel.app/",
@@ -97,18 +97,18 @@ const P = [
   ],
 ];
 const IMAGES = {
-  FigusPlay: ["image16.png", "image27.png", "image43.png", "image54.png", "image57.png", "image59.png", "image60.png", "image63.png"],
-  "Nike Concept": ["image11.png", "image15.png", "image22.png", "image31.png", "image42.png", "image46.png", "image6.png", "image65.png"],
-  Gomilandia: ["image18.png", "image26.png", "image37.png", "image39.png", "image4.png", "image41.png", "image55.png"],
-  Riqo: ["image45.png", "image5.png", "image64.png"],
-  "Mundo JDM": ["image1.png", "image34.png", "image47.png", "image56.png", "image8.png"],
-  "Poke Search": ["image10.png", "image38.png", "image40.png", "image58.png", "image62.png"],
-  "Poke Autoincrement": ["image28.png", "image30.png", "image7.png", "image9.png"],
-  Pedimon: ["image17.png", "image20.png", "image29.png", "image3.png", "image36.png"],
-  "Weather API": ["image13.png", "image21.png", "image33.png", "image35.png", "image50.png", "image53.png"],
-  "Search Crypto": ["image44.png", "image51.png", "image61.png"],
-  "Turnos Web": ["image2.png", "image48.png", "image49.png"],
-  "Casino de Consola": ["image12.png", "image14.png", "image19.png", "image23.png", "image24.png", "image25.png", "image32.png", "image52.png"],
+  FigusApp: ["image16.png", "image27.png", "image43.png", "image57.png", "image59.png", "image60.png", "image63.png", "image64.png"],
+  "Nike Concept": ["image1.png", "image2.png", "image3.png", "image4.png", "image5.png", "image6.png", "image7.png", "image8.png"],
+  Gomilandia: ["image20.png", "image21.png", "image22.png", "image23.png", "image24.png", "image25.png", "image26.png"],
+  Riqo: ["image30.png", "image31.png", "image32.png"],
+  "Mundo JDM": ["image33.png", "image34.png", "image35.png", "image36.png", "image37.png"],
+  "Poke Search": ["image38.png", "image39.png", "image40.png", "image41.png", "image42.png"],
+  "Poke Autoincrement": ["image40.png", "image41.png", "image42.png", "image43.png"],
+  Pedimon: ["image80.png", "image81.png", "image82.png", "image83.png", "image84.png"],
+  "Weather API": ["image70.png", "image71.png", "image72.png", "image73.png", "image74.png"],
+  "Search Crypto": ["image76.png", "image77.png", "image78.png", "image79.png"],
+  "Turnos Web": ["image80.png", "image81.png", "image82.png"],
+  "Casino de Consola": ["image90.png", "image91.png", "image92.png", "image93.png", "image94.png", "image95.png", "image96.png", "image97.png"],
 };
 const FOLDERS = {
   "Search Crypto": "Crypto",
@@ -123,6 +123,14 @@ let galleryProject = "";
 let galleryIndex = 0;
 const pathPart = (part) => encodeURIComponent(part).replace(/%2F/g, "/");
 const imagePath = (project, image) => `./${pathPart(FOLDERS[project] || project)}/${pathPart(image)}`;
+const FEATURED_PROJECT = "FigusApp destacado";
+const FEATURED_IMAGES = [
+  { src: "./PortadaFigusApp.jpg", alt: "Portada de FigusApp" },
+  ...IMAGES.FigusApp.map((image, index) => ({
+    src: imagePath("FigusApp", image),
+    alt: `Captura ${index + 1} de FigusApp`,
+  })),
+];
 function draw(f = "all") {
   G.innerHTML = P.map(
     (p, i) => {
@@ -168,11 +176,12 @@ function setupCarousels() {
   });
 }
 function renderGalleryImage() {
-  const images = IMAGES[galleryProject];
+  const featured = galleryProject === FEATURED_PROJECT;
+  const images = featured ? FEATURED_IMAGES : IMAGES[galleryProject];
   galleryIndex = (galleryIndex + images.length) % images.length;
-  lightboxImage.src = imagePath(galleryProject, images[galleryIndex]);
-  lightboxImage.alt = `Captura ${galleryIndex + 1} de ${images.length} de ${galleryProject}`;
-  lightboxTitle.textContent = galleryProject;
+  lightboxImage.src = featured ? images[galleryIndex].src : imagePath(galleryProject, images[galleryIndex]);
+  lightboxImage.alt = featured ? images[galleryIndex].alt : `Captura ${galleryIndex + 1} de ${images.length} de ${galleryProject}`;
+  lightboxTitle.textContent = featured ? "FigusApp" : galleryProject;
   lightboxCount.textContent = `${galleryIndex + 1} / ${images.length}`;
 }
 function openGallery(project, index) {
@@ -208,6 +217,9 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") lightbox.querySelector(".next").click();
 });
 draw();
+document.querySelectorAll(".featured-project button").forEach((button, index) => {
+  button.onclick = () => openGallery(FEATURED_PROJECT, index);
+});
 document.querySelectorAll(".filter").forEach(
   (b) =>
     (b.onclick = () => {
